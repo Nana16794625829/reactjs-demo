@@ -1,0 +1,20 @@
+{
+  "name": "reactjsdemo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "clsx": "^2.1.1",
+    "react-router-dom": "^6.26.2",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  }
+}

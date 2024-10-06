@@ -1,0 +1,13 @@
+.container {
+    max-width: 22.5rem;
+}
+
+.input {
+    margin-bottom: 0.6rem;
+}
+
+.group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 定義兩列佈局 */
+    gap: 16px; /* 設置列之間的間距 */
+}
