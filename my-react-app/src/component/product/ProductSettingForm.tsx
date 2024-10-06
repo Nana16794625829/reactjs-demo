@@ -2,6 +2,7 @@ import {useForm} from "@mantine/form";
 import {productSettingInitialValues, productSettingTextInputPairs} from "../../utils/product/productSettingForm.ts";
 import {Button, Container, Group, TextInput} from "@mantine/core";
 import classes from "../../css/Form.module.css";
+import {createProduct} from "../../service/ProductSettingService.ts";
 
 function productSettingForm() {
     const form = useForm({
@@ -20,10 +21,19 @@ function productSettingForm() {
         />
     ));
 
+    const handleSubmit = async (values) => {
+        try {
+            const response = await createProduct(values);
+            console.log("Response from server:", response);
+        } catch (error) {
+            console.error("Error submitting form:", error);
+        }
+    };
+
     return (
         <>
             <Container>
-                <form onSubmit={form.onSubmit((values) => console.log(values))}>
+                <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
                     <>{textInputs}</>
                     <Group justify="flex-end" mt="md">
                         <Button type="submit">儲存</Button>

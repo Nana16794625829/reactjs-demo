@@ -7,5 +7,14 @@ export default defineConfig({
   base: "./",
   build: {
     outDir: 'dist'
+  },
+  server: {
+    proxy: {
+      // 代理 API 請求
+      '/api': {
+        target: 'http://localhost:3000', // Mock backend server url
+        changeOrigin: true,
+      }
+    }
   }
 })

@@ -5,13 +5,13 @@ function ProductSettingRecord() {
     const elements = [
         {
             productCode: '001',
-            productName: '紅烏龍微酵',
+            productName: '茶',
             capacity: '375',
             bottleType: '圓瓶',
         },
         {
             productCode: '002',
-            productName: '咖啡醋',
+            productName: '咖啡',
             capacity: '100',
             bottleType: '方瓶',
         },

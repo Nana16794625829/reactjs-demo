@@ -1,6 +1,6 @@
 import {bottleTypeSelection, capacitySelection, productSelection, warehouseSelection} from "./formSelections.ts";
 
-export const stockOutInitialValues =
+export const stockDispatchInitialValues =
     {
         orderNumber: '',
         customer: '',
@@ -26,7 +26,7 @@ export const textInputPairsForStockIn = {
     note_2: '備註2'
 };
 
-export const textInputPairsForStockOut = {
+export const textInputPairsForStockDispatch = {
     orderNumber: '訂單編號',
     customer: '客戶名稱',
     batchNumber: '批號',
@@ -42,7 +42,7 @@ export const dateInputForStockIn = {
     expiryDate: '有效日期',
 }
 
-export const dateInputForStockOut = {
+export const dateInputForStockDispatch = {
     dateOfStockOut: '出庫日期',
     dateOfManufacturing: '製造日期',
     expiryDate: '有效日期',

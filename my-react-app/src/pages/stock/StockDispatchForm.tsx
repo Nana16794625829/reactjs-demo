@@ -1,13 +1,14 @@
 import {Button, Select, Group, TextInput} from '@mantine/core';
 import { useForm } from '@mantine/form';
 import classes from "../../css/Form.module.css";
-import {stockOutInitialValues, selectInputPair, textInputPairsForStockOut, dateInputForStockOut} from "../../utils/stock/formSettings.ts";
+import {stockDispatchInitialValues, selectInputPair, textInputPairsForStockDispatch, dateInputForStockDispatch} from "../../utils/stock/formSettings.ts";
 import {DateInput} from "@mantine/dates";
+import {submitStockDispatchForm} from "../../service/StockDispatchService.ts";
 
-function StockOutForm() {
+function StockDispatchForm() {
     const form = useForm({
         mode: 'uncontrolled',
-        initialValues: stockOutInitialValues,
+        initialValues: stockDispatchInitialValues,
         enhanceGetInputProps: (payload) => ({
             disabled: payload.field === 'productCode'
         })
@@ -44,7 +45,7 @@ function StockOutForm() {
     // 生成所有的 TextInput 和 SelectInput 組合
     const allInputs = {
         ...Object.fromEntries(
-            Object.entries(textInputPairsForStockOut).map(([key, value]) => [
+            Object.entries(textInputPairsForStockDispatch).map(([key, value]) => [
                 key,
                 <TextInput
                     classNames={{ input: classes.input }}
@@ -55,7 +56,7 @@ function StockOutForm() {
             ])
         ),
         ...Object.fromEntries(
-            Object.entries(dateInputForStockOut).map(([key, value]) => [
+            Object.entries(dateInputForStockDispatch).map(([key, value]) => [
                 key,
                 <DateInput
                     valueFormat="YYYY/MM/DD"
@@ -89,9 +90,19 @@ function StockOutForm() {
         )
     };
 
+    // 提交表單並使用 API Service 發送數據
+    const handleSubmit = async (values) => {
+        try {
+            const response = await submitStockDispatchForm(values);
+            console.log("Response from server:", response);
+        } catch (error) {
+            console.error("Error submitting form:", error);
+        }
+    };
+
     return (
         <div>
-            <form className={classes.group} onSubmit={form.onSubmit((values) => console.log(values))}>
+            <form className={classes.group} onSubmit={form.onSubmit((values) => handleSubmit(values))}>
                 {fieldOrder.map((fieldKey) => allInputs[fieldKey])}
                 <Group justify="flex-start" mt="md">
                     <Button type="submit">出庫</Button>
@@ -102,4 +113,4 @@ function StockOutForm() {
     );
 }
 
-export default StockOutForm;
+export default StockDispatchForm;

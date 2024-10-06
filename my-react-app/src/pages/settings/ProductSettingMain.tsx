@@ -4,7 +4,7 @@ import {Button, Flex, Modal, FocusTrap} from "@mantine/core";
 import {useDisclosure} from "@mantine/hooks";
 
 function productSettingMain() {
-    const [opened, { open, close }] = useDisclosure(false);
+    const [opened, { open, close }] = useDisclosure(false)
 
     return (
         <>
